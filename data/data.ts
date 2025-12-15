@@ -155,6 +155,7 @@ export type CategoryType = {
   images?: string[];
   titleColor?: string;
   bento?: boolean;
+  isVideo?: boolean;
   internalData?: { title: string; desc: string; images: string[] }[];
   bannerImage?: string;
   offerImage?: string;
