@@ -5,8 +5,8 @@ function Hero() {
   return (
     <div className='w-screen h-screen relative overflow-hidden'>
         <div className="w-full h-full absolute inset-0 bg-black/40 flex items-center justify-center flex-col gap-5">
-            <h1 className='font-serif text-7xl uppercase italic'>Our Work Reflects Our People</h1>
-            <h1 className='font-serif text-4xl uppercase italic'>Passionate, Precise, and Uncompromising.</h1>
+            <h1 className='font-serif sm:text-7xl text-4xl uppercase italic text-center'>Our Work Reflects Our People</h1>
+            <h1 className='font-serif sm:text-4xl text-xl uppercase italic text-center'>Passionate, Precise, and Uncompromising.</h1>
               {/* <div className="mt-6">
                 <Button className="w-full bg-black text-white dark:bg-white dark:text-black px-10 min-h-13 text-base font-medium rounded-none hover:bg-black hover:text-white  transition">
                   VIEW OUR WORK
