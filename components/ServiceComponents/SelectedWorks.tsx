@@ -45,7 +45,7 @@ export default function SelectedWorks({ service = [] }: Props) {
         {
           open && (
                     <div className="w-full h-full bg-black/30 backdrop-blur-md flex justify-center items-center absolute inset-0 z-999 rounded-2xl">
-          <div className="w-3/5 h-5/6 rounded-2xl overflow-hidden relative">
+          <div className="sm:w-3/5 sm:h-5/6 w-5/6 h-1/2 rounded-2xl overflow-hidden relative">
             <Media src={selectedMedia} alt="portfolio 1" />
             <div onClick={() => {setOpen(false), setSelectedMedia("")}} className="w-8 h-8 cursor-pointer bg-white backdrop-blur-sm text-red-600 font-normal pb-2 grid place-items-center text-2xl absolute right-4 top-4 rounded-full">
             -
