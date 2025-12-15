@@ -8,7 +8,7 @@ const ExpandOnHover = ({title, desc, images}: {title: string, desc: string, imag
   const [expandedImage, setExpandedImage] = useState(3);
 
   const getImageWidth = (index: number) =>
-    index === expandedImage ? "34rem" : "10rem";
+    index === expandedImage ? "60rem" : "10rem";
 
   return (
     <div className="w-full h-auto mb-14">

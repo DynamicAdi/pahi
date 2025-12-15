@@ -51,7 +51,7 @@ const data = {
     isVideo: true,
     titleColor: "white",
     bannerImage: "/fashion.mp4",
-    offerImage: "/assets/ai/ai_wwo.png",
+    offerImage: "/assets/fashion/fashion6.jpg",
     internalData: [
       {
         title: "OUR WORK",
@@ -61,8 +61,8 @@ const data = {
           "/assets/fashion/fashion3.jpg",
           "/assets/fashion/fashion4.jpg",
           "/assets/fashion/fashion1.mp4",
-          "/assets/fashion/fashion5.png",
-          "/assets/fashion/fashion6.png",
+          "/assets/fashion/fashion5.jpg",
+          "/assets/fashion/fashion6.jpg",
         ],
       }
     ],
@@ -78,12 +78,12 @@ const data = {
         title: "OUR WORK",
         desc: "Beautiful, editorial-level visuals that showcase texture, colour, and composition — perfect for brand campaigns and premium menus.",
         images: [
-          "/assets/food/fab1.png",
-          "/assets/food/fab2.png",
+          "/assets/food/fab1.jpg",
+          "/assets/food/fab2.jpg",
           "/assets/food/fab3.jpg",
-          "/assets/food/fab4.png",
-          "/assets/food/fab5.png",
-          "/assets/food/fab6.png",
+          "/assets/food/fab4.jpg",
+          "/assets/food/fab5.jpg",
+          "/assets/food/fab6.jpg",
           "/assets/food/fab7.jpg",
           "/assets/food/fab8.jpg",
         ],
@@ -128,9 +128,9 @@ const data = {
             "/assets/jew/jew3.jpg",
             "/assets/jew/jew4.jpg",
             "/assets/jew/jew5.jpg",
-            "/assets/jew/jew6.png",
-            "/assets/jew/jew7.png",
-            "/assets/jew/jew8.png",
+            "/assets/jew/jew6.jpg",
+            "/assets/jew/jew7.jpg",
+            "/assets/jew/jew8.jpg",
 
         ],
       }
