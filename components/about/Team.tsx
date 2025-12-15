@@ -4,6 +4,12 @@ import { Linkedin } from "lucide-react";
 export default function TeamSection() {
   const team = [
     {
+      name: "Dr. Nishant Jayant",
+      role: "Founder & Director",
+      img: "/Nishant.png",
+      link: "https://www.linkedin.com/in/dr-nishant-jayant-57249015/",
+    },
+    {
       name: "Nutan Guleria",
       role: "Business Head",
       img: "/nutan.jpg",
@@ -12,20 +18,8 @@ export default function TeamSection() {
     {
       name: "Sauvik Acharjee",
       role: "Head - Brand Growth Strategist",
-      img: "/savik.png",
+      img: "/savik.jpg",
       link: "https://www.linkedin.com/in/sauvik-acharjee-marketeer-communication-writer-branding-dei/",
-    },
-    {
-      name: "Dr. Nishant Jayant",
-      role: "Founder & Director",
-      img: "/Nishant.png",
-      link: "https://www.linkedin.com/in/dr-nishant-jayant-57249015/",
-    },
-    {
-      name: "Gautam Mahadikar",
-      role: "Lead - Business Development",
-      img: "/Gautam.png",
-      link: "https://www.linkedin.com/in/gautam-mahadikar-1b6a351ab/",
     },
     {
       name: "Syed Aftab",
@@ -33,6 +27,12 @@ export default function TeamSection() {
       img: "/aftab.jpg",
       link: "https://www.linkedin.com/in/syed-aftab-140202192/",
     },
+    {
+      name: "Gautam Mahadikar",
+      role: "Lead - Business Development",
+      img: "/Gautam.jpg",
+      link: "https://www.linkedin.com/in/gautam-mahadikar-1b6a351ab/",
+    }
   ];
 
   return (
@@ -49,7 +49,7 @@ export default function TeamSection() {
       </h2>
 
       {/* Team Grid */}
-      <div className="flex justify-center items-center flex-nowrap gap-20 text-center">
+      <div className="flex justify-center items-center xl:flex-wrap flex-col sm:flex-row gap-12 sm:gap-20 lg:gap-28 xl:gap-32 text-center max-w-screen-4xl mx-auto px-6 lg:px-8">
         {team.map((member, index) => (
           <div key={index}>
             {/* Circular Image */}
@@ -57,9 +57,9 @@ export default function TeamSection() {
               <Image
                 src={member.img}
                 alt={member.name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
+                width={1080}
+                height={1080}
+                className="w-full h-full object-cover aspect-auto"
               />
             </div>
 

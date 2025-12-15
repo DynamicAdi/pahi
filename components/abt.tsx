@@ -14,7 +14,19 @@ function Philosphy() {
               We believe that true luxury lies in the details. At Paahi, we don't just capture images; we translate your brand's essence into visual narratives that resonate. From the initial concept to the final color grade, our process is collaborative, meticulous, and driven by a vision of perfection.
             </p>
           </div>
-          <div className="relative flex justify-center">
+
+                    <div className="relative justify-center sm:hidden flex">
+             <ImageSpotlight
+                src="https://picsum.photos/seed/philosophy/800/600"
+                alt="Studio Philosophy"
+                orientation="landscape"
+                width={390}
+                height={400}
+                config={{ spotlightSize: 120 }}
+             />
+          </div>
+
+          <div className="relative justify-center hidden sm:flex">
              <ImageSpotlight
                 src="https://picsum.photos/seed/philosophy/800/600"
                 alt="Studio Philosophy"
@@ -24,6 +36,7 @@ function Philosphy() {
                 config={{ spotlightSize: 120 }}
              />
           </div>
+
         </div>
       </section>
   )

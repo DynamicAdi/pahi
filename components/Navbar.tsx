@@ -9,7 +9,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-transparent fixed z-9999  text-black dark:text-white py-5 px-9 flex justify-between items-center transition-colors">
+    <nav className="w-full bg-transparent fixed z-9999 text-black dark:text-white py-5 px-9 flex justify-between items-center transition-colors">
       {/* Logo */}
       <div className="font-semibold text-xl">
         <Image 
