@@ -19,11 +19,11 @@ export default function Ecommerce() {
             passionate, detail-driven team, we are committed to exceeding
             expectations, enhancing brand presence, and enabling our clients to
             stand out in an increasingly competitive digital landscape."
-        image="/abt.jpg"
+        image="/assets/brand/brand_wwo.jpg"
       />
       <BelowSec
         title="Our Creative Code"
-        image="/fab1.jpg"
+        image="/abt-4.jpg"
         desc="We pursue excellence with uncompromising attention to detail, ensuring each project reflects precision, polish, and professionalism. Driven by innovation, we continuously explore new techniques and ideas to craft visuals that remain modern and ahead of industry trends. We believe in collaboration, working closely with clients to bring shared visions to life with intention and clarity. Integrity guides every interaction, built on transparency and trust. Rooted in creativity, we transform ideas into compelling stories that inspire emotion. And through adaptability, we stay agile in a fast-evolving visual landscape, keeping our clients positioned for success."
       />
       <Awards />

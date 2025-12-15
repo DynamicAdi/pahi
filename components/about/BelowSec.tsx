@@ -28,10 +28,10 @@ export default function BelowSec({
           <Image
             src={image}
             alt="Vision Graphic"
-            width={1080}
-            height={1080}
+            width={1920}
+            height={1920}
             // Fixed invalid classname and made sizing responsive without altering lg behavior
-            className="w-full md:w-[90%] lg:w-auto max-h-[60vh] lg:max-h-none object-cover"
+            className="w-full md:w-[90%] lg:w-auto max-h-[30vh] h-5/6 lg:max-h-none object-cover"
           />
         </div>
 

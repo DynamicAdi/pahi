@@ -5,7 +5,44 @@ import React from "react";
 import logo_light from "@/public/pahi_light.png"
 
 const Footer = () => {
-  const [projectType, setProjectType] = useState("Brand Film");
+  const [projectType, setProjectType] = useState("Ecommerce");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/send-msg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          projectType,
+          message,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      setName("");
+      setEmail("");
+      setMessage("");
+      setProjectType("Ecommerce");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section
@@ -33,18 +70,19 @@ const Footer = () => {
           <div className="mt-10 space-y-6 text-sm tracking-wide">
             <div>
               <p className="font-semibold">NEW BUSINESS</p>
-              <p className="text-gray-600 dark:text-gray-400">hello@paahi.com</p>
+              <p className="text-gray-600 dark:text-gray-400">info@peritumproductions.com</p>
             </div>
 
             <div>
               <p className="font-semibold">SHOWREEL CALL</p>
-              <p className="text-gray-600 dark:text-gray-400">+91 98765 43210</p>
+              <p className="text-gray-600 dark:text-gray-400">+918296669344</p>
             </div>
           </div>
         </div>
 
         {/* RIGHT SIDE FORM */}
         <form
+          onSubmit={handleSubmit}
           className="
             p-8 rounded-xl space-y-6
             bg-gray-100 dark:bg-[#231F1D]
@@ -58,6 +96,8 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="John Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="
                   w-full mt-1 px-3 py-2 text-sm rounded-md
                   bg-white dark:bg-transparent
@@ -72,6 +112,8 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="john@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="
                   w-full mt-1 px-3 py-2 text-sm rounded-md
                   bg-white dark:bg-transparent
@@ -95,10 +137,15 @@ const Footer = () => {
                 focus:outline-none focus:border-gray-500
               "
             >
-              <option className="bg-white dark:bg-black">Brand Film</option>
-              <option className="bg-white dark:bg-black">Product Video</option>
-              <option className="bg-white dark:bg-black">Ecommerce Content</option>
-              <option className="bg-white dark:bg-black">Campaign Strategy</option>
+              <option className="bg-white dark:bg-black" value={"ecommere"}>Ecommerce</option>
+              <option className="bg-white dark:bg-black" value={"brand"}>Brand</option>
+              <option className="bg-white dark:bg-black" value={"Food"}>Food & Drink</option>
+              <option className="bg-white dark:bg-black" value={"Jewellery"}>Jewellery</option>
+              <option className="bg-white dark:bg-black" value={"Fashion"}>Fashion</option>
+              <option className="bg-white dark:bg-black" value={"Model"}>Model</option>
+              <option className="bg-white dark:bg-black" value={"Real Estate"}>Real Estate</option>
+              <option className="bg-white dark:bg-black" value={"AI Services"}>AI Services</option>
+              <option className="bg-white dark:bg-black" value={"other"}>Other</option>
             </select>
           </div>
 
@@ -108,6 +155,8 @@ const Footer = () => {
             <textarea
               placeholder="Tell us about your vision..."
               rows={4}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               className="
                 w-full mt-1 px-3 py-2 text-sm rounded-md
                 bg-white dark:bg-transparent
@@ -133,6 +182,7 @@ const Footer = () => {
           {/* Submit Button */}
           <button
             type="submit"
+            disabled={loading}
             className="
               w-full mt-4 py-3 rounded-md font-semibold tracking-wide
               bg-black text-white 
@@ -141,7 +191,7 @@ const Footer = () => {
               transition
             "
           >
-            SEND INQUIRY →
+            {loading ? "SENDING..." : "SEND INQUIRY →"}
           </button>
         </form>
       </div>
@@ -152,13 +202,13 @@ const Footer = () => {
           
           {/* LEFT – LOGO + ABOUT */}
           <div>
-                    <Image
-        src={logo_light.src}
-        alt="Pahhi Logo"
-        width={100}
-        height={40}
-        className="hidden dark:block"
-        />
+            <Image
+              src={logo_light.src}
+              alt="Pahhi Logo"
+              width={100}
+              height={40}
+              className="hidden dark:block"
+            />
             <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed max-w-sm">
               A luxury content studio based in Bengaluru. We craft stories that
               move people and build brands.
@@ -169,9 +219,8 @@ const Footer = () => {
           <div>
             <h3 className="text-xs text-gray-500 dark:text-gray-400 font-semibold tracking-wider">STUDIO</h3>
             <div className="mt-4 space-y-1 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-              <p>123 Indiranagar, 12th Main</p>
-              <p>Bengaluru, KA 560038</p>
-              <p className="mt-2">+91 98765 43210</p>
+              <p>26A, 1st Floor, 22, Patel Ram Reddy Rd, <br /> K.R.Colony, Domlur I Stage, Bengaluru</p>
+              <p className="mt-2">+91 8296669344</p>
             </div>
           </div>
 
