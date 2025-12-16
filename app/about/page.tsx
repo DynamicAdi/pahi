@@ -13,7 +13,12 @@ export default function Ecommerce() {
         desc="Paahi Productions is a premium visual production studio shaping how modern brands are seen, felt, and remembered. Based in Bengaluru and trusted by emerging and established leaders across fashion, jewellery, lifestyle, F&B, and D2C, we specialise in crafting striking imagery that builds desire and drives business growth. Our approach blends refined aesthetics, deep brand understanding, and world-class production standards to deliver visuals that elevate positioning and convert customers. For brands aiming to scale, differentiate, and look unmistakably premium, Paahi Productions is more than a studio, we’re your creative partner in building a powerful visual identity."
         image="/assets/brand/brand_wwo.jpg"
       />
-      <VisionSection />
+      {/* <VisionSection /> */}
+            <BelowSec
+        title="The Vision That Drives Our Craft"
+        desc="Our vision at Paahi Productions is to be Bengaluru’s leading premium media production house, redefining the standards of product photography, videography, and creative visual storytelling. We aspire to shape how modern brands are perceived by crafting visuals that inspire desire, elevate identity, and drive measurable business impact. By consistently innovating and delivering excellence, we aim to become the trusted creative partner for brands that seek to lead, not follow."
+        image="/abt.jpg"
+      />
       <BelowSec
         dec={2}
         title="Turning Ideas Into Visual Experiences"

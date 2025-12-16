@@ -16,11 +16,11 @@ export default function Service() {
   }
   return (
       <div>
-        <HeroSection service={data[service].title} titleColor={data[service].titleColor ?? "black"} bgPic={data[service].bannerImage as string} isVideo={data[service].isVideo}/>
+        <HeroSection subTitle={data[service].subTitle} service={data[service].title} titleColor={data[service].titleColor ?? "black"} bgPic={data[service].bannerImage as string} isVideo={data[service].isVideo}/>
         <WhatWeOffer picture={data[service].offerImage as string}/>
         {
           data[service].internalData?.map((src, idx) => (
-            data[service].bento ?  <SelectedWorks key={idx} service={src.images} /> : <ExpandOnHover key={idx} title={src.title} desc={src.desc} images={src.images} />
+            data[service].bento ?  <SelectedWorks key={idx} service={src.images} subTitle={src.desc} /> : <ExpandOnHover key={idx} title={src.title} desc={src.desc} images={src.images} />
           ))
         }
         <CTASection/> 

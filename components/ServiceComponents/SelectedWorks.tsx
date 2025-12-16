@@ -2,9 +2,9 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-type Props = { service: string[] };
+type Props = { service: string[], subTitle: string };
 
-export default function SelectedWorks({ service = [] }: Props) {
+export default function SelectedWorks({ service = [], subTitle }: Props) {
   const items = Array.isArray(service) ? service.slice(0, 6) : [];
   const [open, setOpen] = useState(false)
   const [selectedMedia, setSelectedMedia] = useState("");
@@ -54,9 +54,10 @@ export default function SelectedWorks({ service = [] }: Props) {
         </div>
           )
         }
-        <h2 className="text-center text-black dark:text-white text-2xl md:text-3xl font-light tracking-wide mb-8">
+        <h2 className="text-center text-black dark:text-white text-2xl md:text-3xl font-light tracking-wide mb-1">
           Our Work
         </h2>
+        <p className="text-center mb-8 text-sm font-sans text-neutral-300">{subTitle}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 md:grid-rows-8 gap-4">
 

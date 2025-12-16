@@ -2,6 +2,7 @@
 const data = {
   "brand-campaigns": {
     title: "Brand Campaigns",
+    subTitle: "Big Ideas. Bold Visuals. Impact That Lasts.",
     titleColor: "white",
     bento: true,
     isVideo: true,
@@ -10,7 +11,7 @@ const data = {
     internalData: [
       {
         title: "OUR WORK",
-        desc: "Narratives that reveal your origin, purpose, and philosophy through compelling visuals and storytelling.",
+        desc: "For brands ready to lead with narrative, emotion, and excellence, we’re here to create a film that speaks volumes.",
         images: [
           "/assets/brand/brand1.mp4",
           "/assets/brand/brand4.png",
@@ -24,6 +25,7 @@ const data = {
   },
   ecommerce: {
     title: "Ecommerce",
+    subTitle: "Clean, consistent, conversion-focused imagery optimised for marketplaces and D2C brands.",
     titleColor: "white",
     bento: false,
     bannerImage: "/assets/ecom/ecom_tp.jpg",
@@ -31,7 +33,7 @@ const data = {
     internalData: [
       {
         title: "OUR WORK",
-        desc: "Clean, crisp images on seamless backgrounds that meet marketplace standards (Amazon, Flipkart, etc.) and enhance your product listings instantly.",
+        desc: "Elevate your catalogue with premium imagery that drives engagement, boosts conversion, and positions your brand as a leader.",
         images: [
           "/assets/ecom/ecom1.jpg",
           "/assets/ecom/ecom2.jpg",
@@ -47,6 +49,7 @@ const data = {
   },
   fashion: {
     title: "Fashion",
+    subTitle: "Runway-level storytelling and editorial visuals crafted for high-impact campaigns.",
     bento: true,
     isVideo: true,
     titleColor: "white",
@@ -55,7 +58,7 @@ const data = {
     internalData: [
       {
         title: "OUR WORK",
-        desc: "Photos that feel cinematic, tell a story, and set the tone for magazines, billboards, and high-end campaigns — polished for impact and memorability.",
+        desc: "Stand out in fashion’s competitive landscape with visuals that don’t just showcase style, they define it.",
         images: [
           "/assets/fashion/fashion2.mp4",
           "/assets/fashion/fashion3.jpg",
@@ -69,6 +72,7 @@ const data = {
   },
   "food-and-drink": {
     title: "Food and Drink",
+    subTitle: "Great food deserves to be seen and felt.",
     titleColor: "white",
     bannerImage: "/assets/food/tp_fd.jpg",
     offerImage: "/assets/food/fd_wwo.jpg",
@@ -76,7 +80,7 @@ const data = {
     internalData: [
       {
         title: "OUR WORK",
-        desc: "Beautiful, editorial-level visuals that showcase texture, colour, and composition — perfect for brand campaigns and premium menus.",
+        desc: "Let’s create imagery that turns lookers into diners and diners into loyal customers.",
         images: [
           "/assets/food/fab1.jpg",
           "/assets/food/fab2.jpg",
@@ -93,12 +97,13 @@ const data = {
   "ai-services": {
     title: "AI-Enabled Services",
     bento: false,
+    subTitle: "Reimagining Content Creation With Intelligent Creativity",
     bannerImage: "/assets/ai/ai_tp.png",
     offerImage: "/assets/ai/ai_wwo.png",
     internalData: [
       {
         title: "OUR WORK",
-        desc: "AI-powered tools help us refine and perfect images with unparalleled precision — from smart retouching and colour correction to seamless background generation and high-volume catalogue editing.",
+        desc: "Let’s elevate your brand with next-generation photo, video, and digital content.",
         images: [
           "/assets/ai/ai1.png",
           "/assets/ai/ai2.png",
@@ -114,6 +119,7 @@ const data = {
   },
   jewellery: {
     title: "Jewellery",
+    subTitle: "Precision lighting, macro clarity, and premium presentation that enhance perceived value.",
     bento: false,
     titleColor: "white",
     bannerImage: "/assets/jew/jew_wwo.jpg",
@@ -121,7 +127,7 @@ const data = {
     internalData: [
       {
         title: "OUR WORK",
-        desc: "Discover every fine cut, curve, and gemstone facet with close-up shots that reveal craftsmanship and beauty.",
+        desc: "Jewellery photography isn’t just about pictures. It’s about creating visuals that reflect emotion, value, and desirability. Every shot becomes a touchpoint that brings your audience closer to purchase.",
         images: [
            "/assets/jew/jew1.jpg",
             "/assets/jew/jew2.jpg",
@@ -159,6 +165,7 @@ export type CategoryType = {
   internalData?: { title: string; desc: string; images: string[] }[];
   bannerImage?: string;
   offerImage?: string;
+  subTitle: string;
 };
 
 export type CategoriesMap = {

@@ -1,4 +1,4 @@
-export default function HeroSection({isVideo = false, service, bgPic, titleColor}:{isVideo?: boolean, service:string, bgPic: string, titleColor: string}) {
+export default function HeroSection({isVideo = false, service, bgPic, titleColor, subTitle}:{isVideo?: boolean, service:string, bgPic: string, titleColor: string, subTitle: string}) {
   return (
     <section className={`bg-no-repeat bg-size-[100%_auto] bg-center  min-h-[450px] w-full py-32 px-6 relative`}>
       {/* <div className="w-full h-full bg-black/60 absolute inset-0"></div> */}
@@ -29,7 +29,7 @@ export default function HeroSection({isVideo = false, service, bgPic, titleColor
 
         {/* Subtext */}
         <p className={`${titleColor==="black" ? "text-black":"text-white"} mt-6 text-base md:text-2xl`}>
-          Make Every Product Irresistible. Sell With Confidence.
+          {subTitle}
         </p>
       </div>
     </section>
