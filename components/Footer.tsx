@@ -70,12 +70,12 @@ const Footer = () => {
           <div className="mt-10 space-y-6 text-sm tracking-wide">
             <div>
               <p className="font-semibold">NEW BUSINESS</p>
-              <p className="text-gray-600 dark:text-gray-400">info@peritumproductions.com</p>
+              <a href="mailto:info@peritumproductions.com" className="text-gray-600 dark:text-gray-400">info@peritumproductions.com</a>
             </div>
 
             <div>
               <p className="font-semibold">SHOWREEL CALL</p>
-              <p className="text-gray-600 dark:text-gray-400">+918296669344</p>
+              <a href="tel:+918296669344" className="text-gray-600 dark:text-gray-400">+918296669344</a>
             </div>
           </div>
         </div>
@@ -220,7 +220,7 @@ const Footer = () => {
             <h3 className="text-xs text-gray-500 dark:text-gray-400 font-semibold tracking-wider">STUDIO</h3>
             <div className="mt-4 space-y-1 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
               <p>26A, 1st Floor, 22, Patel Ram Reddy Rd, <br /> K.R.Colony, Domlur I Stage, Bengaluru</p>
-              <p className="mt-2">+91 8296669344</p>
+              <a href="tel:+918296669344" className="mt-2">+91 8296669344</a>
             </div>
           </div>
 

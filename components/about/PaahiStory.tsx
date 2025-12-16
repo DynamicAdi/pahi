@@ -10,14 +10,14 @@ export default function PaahiStory() {
       <div className="max-w-3xl mx-auto text-center">
         
         {/* Main Title */}
-        <h2 className="text-3xl md:text-5xl font-serif mb-6">
+        <h2 className="text-3xl md:text-6xl font-serif mb-6">
           The Paahi Story
         </h2>
 
         {/* Paragraphs */}
-                <p className="max-w-2xl mx-auto text-lg text-neutral-600 dark:text-neutral-400">
+                {/* <p className="max-w-2xl mx-auto text-lg text-neutral-600 dark:text-neutral-400">
           Born from a desire to bridge the gap between commercial efficiency and cinematic artistry, Paahi Productions stands as a beacon for brands that refuse to compromise.
-        </p>
+        </p> */}
         {/* <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
           Paahi Productions was born from a simple belief: that content should not just be
           seen, but felt. Based in the heart of Bengaluru, we are a collective of filmmakers,

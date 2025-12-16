@@ -7,6 +7,12 @@ export default function Ecommerce() {
   return (
     <div>
       <PaahiStory />
+            <BelowSec
+        dec={2}
+        title="Who We Are"
+        desc="Paahi Productions is a premium visual production studio shaping how modern brands are seen, felt, and remembered. Based in Bengaluru and trusted by emerging and established leaders across fashion, jewellery, lifestyle, F&B, and D2C, we specialise in crafting striking imagery that builds desire and drives business growth. Our approach blends refined aesthetics, deep brand understanding, and world-class production standards to deliver visuals that elevate positioning and convert customers. For brands aiming to scale, differentiate, and look unmistakably premium, Paahi Productions is more than a studio, we’re your creative partner in building a powerful visual identity."
+        image="/assets/brand/brand_wwo.jpg"
+      />
       <VisionSection />
       <BelowSec
         dec={2}

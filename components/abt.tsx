@@ -7,8 +7,8 @@ function Philosphy() {
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             {/* <h2 className="text-xs uppercase tracking-[0.2em] text-gold-500 font-bold">Our Philosophy</h2> */}
-            <p className="font-serif text-3xl md:text-5xl leading-tight dark:text-white text-charcoal">
-              For us, it starts by listening to our clients...
+            <p className="font-serif text-3xl md:text-4xl leading-tight dark:text-white text-charcoal">
+              For us, it starts by listening to our clients and ends by speaking meaningfully to their customers.
             </p>
             <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-lg">
               We believe that true luxury lies in the details. At Paahi, we don't just capture images; we translate your brand's essence into visual narratives that resonate. From the initial concept to the final color grade, our process is collaborative, meticulous, and driven by a vision of perfection.
