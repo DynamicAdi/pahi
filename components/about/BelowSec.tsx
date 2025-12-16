@@ -5,11 +5,13 @@ export default function BelowSec({
   title,
   desc,
   image,
+  isVideo = false
 }: {
   dec?: number;
   title: string;
   desc: string;
   image: string;
+  isVideo?: boolean
 }) {
   return (
     <section className="w-full bg-white text-black dark:bg-black dark:text-white py-20 transition-colors duration-300">
@@ -25,14 +27,29 @@ export default function BelowSec({
       >
         {/* Left Image (keeps your original lg justification) */}
         <div className={`w-full md:w-1/2 lg:w-full h-auto flex justify-center lg:justify-start`}>
-          <Image
-            src={image}
-            alt="Vision Graphic"
-            width={1920}
-            height={1920}
-            // Fixed invalid classname and made sizing responsive without altering lg behavior
-            className="w-full md:w-[90%] lg:w-auto max-h-[30vh] h-5/6 lg:max-h-none object-cover"
-          />
+        {
+          isVideo ? (
+            <video
+              // style={{filter: "brightness(30%)"}}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              className="w-full md:w-[90%] lg:w-auto max-h-[30vh] h-5/6 lg:max-h-none object-cover"
+            >
+              <source src={image} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src={image}
+              alt="Vision Graphic"
+              width={1920}
+              height={1920}
+              className="w-full md:w-[90%] lg:w-auto max-h-[30vh] h-5/6 lg:max-h-none object-cover"
+            />
+          )
+        }
         </div>
 
         {/* Right Content Box (keeps your original w-5/6 at lg) */}
