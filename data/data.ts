@@ -119,6 +119,7 @@ const data = {
   "ai-services": {
     title: "AI-Enabled Services",
     bento: false,
+    titleColor: "white",
     subTitle: "Reimagining Content Creation With Intelligent Creativity",
     bannerImage: "/assets/ai/ai_tp.png",
     offerImage: "/assets/ai/ai_wwo.png",
@@ -155,7 +156,7 @@ const data = {
     section: {
       title: "Make Every Sparkle Tell a Story",
       desc: "Jewellery deserves to be seen — in its full brilliance, texture, and craftsmanship. At Paahi Productions, we specialise in capturing luxurious, detail-rich visuals that elevate your jewellery brand and help every piece shine both online and offline. From high-end e-commerce catalogues to brand campaigns and lookbooks, our photography ensures your designs are shown with elegance, precision, and irresistible appeal. Jewellery photography is an art — one that highlights intricate textures, the sparkle of gemstones, and the finesse of metalwork — and we bring that art to life with world-class visuals.",
-      image: "/assets/home/jew.jpg",
+      image: "/assets/jew/jew_wwo.jpg",
     },
     internalData: [
       {

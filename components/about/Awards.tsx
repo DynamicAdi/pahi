@@ -20,7 +20,7 @@ function Awards() {
             aria-hidden="true"
           />
           <h1 className="text-5xl md:text-7xl lg:text-7xl font-serif text-black dark:text-white">100</h1>
-          <h3 className="dark:text-neutral-400 text-neutral-700 md:text-3xl lg:text-3xl font-sans">Awards</h3>
+          <h3 className="dark:text-neutral-400 text-neutral-700 md:text-3xl lg:text-3xl font-serif">Awards</h3>
         </div>
 
         {/* Card 2 */}
@@ -32,7 +32,7 @@ function Awards() {
             aria-hidden="true"
           />
           <h1 className="text-5xl md:text-7xl lg:text-7xl font-serif text-black dark:text-white">56</h1>
-          <h3 className="dark:text-neutral-400 text-neutral-700 md:text-3xl lg:text-3xl font-sans">Exhibitions</h3>
+          <h3 className="dark:text-neutral-400 text-neutral-700 md:text-3xl lg:text-3xl font-serif">Exhibitions</h3>
         </div>
 
         {/* Card 3 */}
@@ -44,7 +44,7 @@ function Awards() {
             aria-hidden="true"
           />
           <h1 className="text-5xl md:text-7xl lg:text-7xl font-serif text-black dark:text-white">287</h1>
-          <h3 className="dark:text-neutral-400 text-neutral-700 md:text-3xl lg:text-3xl font-sans">Projects</h3>
+          <h3 className="dark:text-neutral-400 text-neutral-700 md:text-3xl lg:text-3xl font-serif">Projects</h3>
         </div>
       </div>
     </div>

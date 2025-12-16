@@ -57,7 +57,7 @@ export default function SelectedWorks({ service = [], subTitle }: Props) {
         <h2 className="text-center text-black dark:text-white text-2xl md:text-3xl font-light tracking-wide mb-1">
           Our Work
         </h2>
-        <p className="text-center mb-8 text-sm font-sans text-neutral-300">{subTitle}</p>
+        <p className="text-center mb-8 text-xl font-serif text-neutral-300">{subTitle}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 md:grid-rows-8 gap-4">
 

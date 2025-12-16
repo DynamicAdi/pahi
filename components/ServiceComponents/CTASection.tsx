@@ -7,8 +7,8 @@ export default function CTASection() {
           Ready to elevate your e-commerce content?
         </h2>
 
-        <a href="mailto:info@peritumproductions.com" className="bg-black dark:bg-white text-white dark:text-black font-medium tracking-wide px-6 py-3 rounded-md hover:bg-neutral-800 dark:hover:bg-neutral-200 transition">
-          GET A FREE QUOTE
+        <a href="mailto:info@peritumproductions.com" className="bg-black dark:bg-white text-lg text-white dark:text-black font-medium tracking-wide px-6 py-3 rounded-md hover:bg-neutral-800 dark:hover:bg-neutral-200 transition">
+          Ready to elevate your brand's visual content.
         </a>
 
       </div>
