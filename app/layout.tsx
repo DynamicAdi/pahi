@@ -29,18 +29,18 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+        > */}
           <div>
             <Navbar />
             {children}
             <Footer />
           </div>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
