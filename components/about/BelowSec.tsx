@@ -21,12 +21,12 @@ export default function BelowSec({
         - lg/desktop: EXACTLY your original layout (including reverse when `dec` is truthy)
       */}
       <div
-        className={`flex flex-col md:flex-row justify-start gap-5 items-center ${
+        className={`flex h-full flex-col md:flex-row justify-start gap-5 items-center ${
           dec ? "lg:flex-row-reverse" : "lg:flex-row"
         }`}
       >
         {/* Left Image (keeps your original lg justification) */}
-        <div className={`w-full md:w-1/2 lg:w-full h-auto flex justify-center lg:justify-start`}>
+        <div className={`w-full md:w-1/2 h-120 lg:w-full flex justify-end lg:justify-start`}>
         {
           isVideo ? (
             <video
@@ -36,17 +36,17 @@ export default function BelowSec({
               muted
               playsInline
               preload="none"
-              className="w-full md:w-[90%] lg:w-auto max-h-[30vh] h-5/6 lg:max-h-none object-cover"
+              className="w-full h-full object-cover"
             >
               <source src={image} type="video/mp4" />
             </video>
           ) : (
-            <Image
+            <img
               src={image}
               alt="Vision Graphic"
-              width={1920}
-              height={1920}
-              className="w-full md:w-[90%] lg:w-auto max-h-[30vh] h-5/6 lg:max-h-none object-cover"
+              // width={1920}
+              // height={1920}
+              className="w-full h-full object-cover"
             />
           )
         }
