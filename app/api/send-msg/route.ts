@@ -5,7 +5,6 @@ export async function POST(req: Request) {
   try {
     const { name, email, projectType, message } = await req.json();
 
-    // Basic validation
     if (!name || !email || !projectType || !message) {
       return NextResponse.json(
         { error: "All fields are required" },
@@ -13,7 +12,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create transporter
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -24,15 +22,41 @@ export async function POST(req: Request) {
       },
     });
 
-    // Email template
-    const htmlTemplate = `
+    /* =========================
+       1️⃣ EMAIL TO ADMIN
+    ========================== */
+    const adminTemplate = `
+      <div style="font-family: Arial, sans-serif; padding: 20px;">
+        <h2>New Project Inquiry</h2>
+
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Project Type:</strong> ${projectType}</p>
+
+        <p><strong>Message:</strong></p>
+        <p style="white-space: pre-line;">${message}</p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: `"Project Inquiry" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER, // 👈 admin email
+      subject: "New Project Inquiry Received",
+      html: adminTemplate,
+    });
+
+    /* =========================
+       2️⃣ EMAIL TO USER
+    ========================== */
+    const userTemplate = `
       <div style="font-family: Arial, sans-serif; padding: 20px;">
         <h2>We Received Your Project Inquiry</h2>
         <p>Hi <strong>${name}</strong>,</p>
+
         <p>Thank you for reaching out! Here are the details you submitted:</p>
 
-        <p><strong>Email:</strong> ${email}</p>
         <p><strong>Project Type:</strong> ${projectType}</p>
+
         <p><strong>Message:</strong></p>
         <p style="white-space: pre-line;">${message}</p>
 
@@ -46,12 +70,11 @@ export async function POST(req: Request) {
       </div>
     `;
 
-    // Send email
     await transporter.sendMail({
       from: `"Project Inquiry" <${process.env.EMAIL_USER}>`,
-      to: email, // Send to received email
+      to: email, // 👈 user email
       subject: "Your project inquiry has been received",
-      html: htmlTemplate,
+      html: userTemplate,
     });
 
     return NextResponse.json({ success: true });
