@@ -15,6 +15,7 @@ export default function HeroSection({isVideo = false, service, bgPic, titleColor
               <source src={bgPic} type="video/mp4" />
             </video> : (
               <img 
+              style={{filter: "brightness(30%)"}}
               className="w-full h-full absolute inset-0 -z-10 object-cover"
               alt="banne"
               src={bgPic}

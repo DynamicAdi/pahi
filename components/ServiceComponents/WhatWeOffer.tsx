@@ -12,7 +12,7 @@ export default function WhatWeOffer({ picture }: { picture: string }) {
             What We Offer
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 md:max-w-md mb-10 transition-colors duration-300">
+          <p className="text-gray-600 dark:text-gray-400 md:max-w-md mb-10 font-serif transition-colors duration-300">
             We bring a specialized approach to e-commerce, combining technical
             expertise with creative vision to deliver assets that perform.
           </p>
