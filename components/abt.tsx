@@ -22,7 +22,7 @@ function Philosphy() {
             src="https://picsum.photos/seed/philosophy/800/600"
             alt="Studio Philosophy"
             orientation="landscape"
-            width={390}
+            width={360}
             height={400}
             config={{ spotlightSize: 120 }}
           />
