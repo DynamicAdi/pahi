@@ -269,7 +269,7 @@ const Footer = () => {
           </div>
 
           {/* RIGHT – LINKS */}
-          <div className="flex max-md:flex-col justify-center gap-5 items-start">
+          <div className="flex max-md:flex-col text-center justify-center gap-5 items-start">
             <div>
               <h3 className="text-xs text-gray-500 dark:text-gray-400 font-semibold tracking-wider">
                 LINKS
@@ -286,7 +286,7 @@ const Footer = () => {
                   ["Ai Services", "/ai-services"],
                   ["Contact Us", "/contact"],
                 ].map(([name, link]) => (
-                  <Link href={link}>
+                  <Link key={link} href={link}>
                     <li
                       key={name}
                       className="hover:text-black dark:hover:text-white transition cursor-pointer"
