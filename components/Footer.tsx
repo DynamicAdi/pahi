@@ -269,22 +269,32 @@ const Footer = () => {
           </div>
 
           {/* RIGHT – LINKS */}
-          <div className="flex gap-5 items-start">
+          <div className="flex max-md:flex-col justify-center gap-5 items-start">
             <div>
               <h3 className="text-xs text-gray-500 dark:text-gray-400 font-semibold tracking-wider">
                 LINKS
               </h3>
-              <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
-                {["Home", "About", "Ecommerce", "Brand Films", "Contact"].map(
-                  (link) => (
+              <ul className="mt-4 grid md:grid-cols-2 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                {[
+                  ["Home", "/"],
+                  ["About", "/about"],
+                  ["Ecommerce", "/ecommerce"],
+                  ["Fashion", "/fashion"],
+                  ["Jewellery", "/jewellery"],
+                  ["Brand Campaigns", "/brand-campaigns"],
+                  ["Food & Drink", "/food-and-drink"],
+                  ["Ai Services", "/ai-services"],
+                  ["Contact Us", "/contact"],
+                ].map(([name, link]) => (
+                  <Link href={link}>
                     <li
-                      key={link}
+                      key={name}
                       className="hover:text-black dark:hover:text-white transition cursor-pointer"
                     >
-                      {link}
+                      {name}
                     </li>
-                  )
-                )}
+                  </Link>
+                ))}
               </ul>
             </div>
             <div>
@@ -292,13 +302,11 @@ const Footer = () => {
                 Privacy
               </h3>
               <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
-                    <Link href={"/privacy"}>
-                    <li
-                      className="hover:text-black dark:hover:text-white transition cursor-pointer"
-                    >
-                      Privacy Policy
-                    </li>
-                    </Link>
+                <Link href={"/privacy"}>
+                  <li className="hover:text-black dark:hover:text-white transition cursor-pointer">
+                    Privacy Policy
+                  </li>
+                </Link>
               </ul>
             </div>
           </div>

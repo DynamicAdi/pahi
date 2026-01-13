@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 function Hero() {
   return (
@@ -8,9 +9,11 @@ function Hero() {
             <h1 className='font-serif sm:text-7xl text-4xl uppercase italic text-center'>Our Work Reflects Our People</h1>
             <h1 className='font-serif sm:text-4xl text-xl uppercase italic text-center'>Passionate, Precise, and Uncompromising.</h1>
               <div className="mt-6">
+                <Link href={"/ecommerce"}>
                 <Button className="w-full cursor-pointer bg-black text-white dark:bg-white dark:text-black px-10 min-h-13 text-base font-medium rounded-none hover:bg-black hover:text-white  transition">
                   VIEW OUR WORK
                 </Button>
+                </Link>
               </div>
         </div>
         <video
