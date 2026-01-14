@@ -2,6 +2,8 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { ContactFormDialog } from "@/components/ContactFormDialog";
 
 // Dynamically imported components
 const Hero = dynamic(() => import("@/components/landing_page/Hero"), {
@@ -34,6 +36,19 @@ const OurClients = dynamic(
 // );
 
 export default function Home() {
+  const [open,setOpen] = useState(false);
+  useEffect(()=>{
+    const handleScroll = () => {
+      const totalHeight = document.body.scrollHeight;
+      const percentage = 0.3 * totalHeight;
+      const isFilled = JSON.parse(localStorage.getItem("contact-form"))?.isFilled || false;
+      if(window.scrollY>percentage && !isFilled){
+          setOpen(true);
+          window.removeEventListener("scroll",handleScroll);
+      }
+    };
+    window.addEventListener("scroll",handleScroll);
+  },[]);
   return (
     <>
       {/* Overlay animations */}
@@ -49,6 +64,7 @@ export default function Home() {
           ease: "easeInOut",
         }}
       >
+        <ContactFormDialog open={open} setOpen={setOpen} />
         <Hero />
         <Philosphy />
         {/* <OurWorkSection /> */}

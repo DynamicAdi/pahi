@@ -1,20 +1,37 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import SubmitButton from "@/components/SubmitButton";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 export default function ContactPage() {
+    const handleSubmit = async (formData: FormData) => {
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+    };
+    const request = await fetch("/api/contact-us",{method:"POST",body:JSON.stringify(data)});
+    const response = await request.json();
+    if(response.success){
+      redirect("/thanks");
+    }else{
+      toast.error(response.error);
+    }
+  };
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
       <section className="relative overflow-hidden">
-
-        <div className="mx-auto max-w-5xl px-6 py-24 text-center">
+        <div className="mx-auto max-w-5xl px-6 pt-24 pb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
             Contact Us
           </h1>
@@ -34,18 +51,26 @@ export default function ContactPage() {
               <CardTitle>Send us a message</CardTitle>
             </CardHeader>
             <CardContent className="h-full">
-              <form className="space-y-4 flex flex-col h-full">
-                <Input placeholder="Your name" />
-                <Input type="email" placeholder="Your email" />
+              <form action={handleSubmit} className="space-y-4 flex flex-col h-full">
+                <Input name="name" required placeholder="Your name" />
+                <Input name="email" required type="email" placeholder="Your email" />
+                <Input
+                  required
+                  type="tel"
+                  name="phone"
+                  placeholder="Your Phone"
+                />
                 <Textarea
+                  required
+                  name="message"
                   placeholder="Write your message here..."
                   rows={8}
                   className="flex-1"
                 />
-                <Button className="w-full gap-2">
+                <SubmitButton className="w-full gap-2">
                   <Send className="h-4 w-4" />
                   Send Message
-                </Button>
+                </SubmitButton>
               </form>
             </CardContent>
           </Card>
@@ -108,5 +133,5 @@ export default function ContactPage() {
         </Card>
       </section>
     </main>
-  )
+  );
 }

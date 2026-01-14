@@ -14,7 +14,7 @@ export default function ThankYouPage() {
 
   return (
     <main className="min-h-screen max-md:py-20 flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950 px-6">
-      <div className="relative max-w-lg w-full bg-white dark:bg-neutral-900 rounded-2xl shadow-xl p-10 text-center overflow-hidden">
+      <div className="animate-btu relative max-w-lg w-full bg-white dark:bg-neutral-900 rounded-2xl shadow-xl p-10 text-center overflow-hidden">
 
         {/* Decorative glow */}
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-green-400/20 rounded-full blur-3xl" />

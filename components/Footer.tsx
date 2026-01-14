@@ -297,11 +297,11 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="flex flex-col justify-center items-center">
               <h3 className="text-xs text-gray-500 dark:text-gray-400 font-semibold tracking-wider">
                 Privacy
               </h3>
-              <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+              <ul className="mt-4 text-center space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <Link href={"/privacy"}>
                   <li className="hover:text-black dark:hover:text-white transition cursor-pointer">
                     Privacy Policy
