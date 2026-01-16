@@ -5,11 +5,14 @@ import React from "react";
 import logo_light from "@/public/pahi_light.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 const Footer = () => {
   const [projectType, setProjectType] = useState("Ecommerce");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bookReel, setBookReel] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,17 +30,21 @@ const Footer = () => {
           email,
           projectType,
           message,
+          phone,
+          bookReel,
         }),
       });
 
       if (!res.ok) {
         throw new Error("Failed to send email");
       }
-
+      localStorage.setItem("contact-form", JSON.stringify({ isFilled: true }));
       setName("");
       setEmail("");
       setMessage("");
+      setPhone("");
       setProjectType("Ecommerce");
+      setBookReel(false);
       router.push("/thanks");
     } catch (error) {
       console.error(error);
@@ -70,24 +77,46 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="mt-10 space-y-6 text-sm tracking-wide">
+            {/* NEW BUSINESS */}
             <div>
-              <p className="font-semibold">NEW BUSINESS</p>
-              <a
-                href="mailto:info@peritumproductions.com"
-                className="text-gray-600 dark:text-gray-400"
-              >
-                info@peritumproductions.com
-              </a>
+              <p className="font-semibold text-foreground">NEW BUSINESS</p>
+
+              <div className="mt-1 flex flex-wrap items-center gap-3">
+                <p className="text-gray-600 dark:text-gray-400">
+                  info@peritumproductions.com
+                </p>
+
+                <Link href="mailto:info@peritumproductions.com">
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="h-auto px-2 text-primary"
+                  >
+                    Contact Us Now →
+                  </Button>
+                </Link>
+              </div>
             </div>
 
+            {/* SHOWREEL CALL */}
             <div>
-              <p className="font-semibold">SHOWREEL CALL</p>
-              <a
-                href="tel:+918296669344"
-                className="text-gray-600 dark:text-gray-400"
-              >
-                +918296669344
-              </a>
+              <p className="font-semibold text-foreground">SHOWREEL CALL</p>
+
+              <div className="mt-1 flex flex-wrap items-center gap-3">
+                <p className="text-gray-600 dark:text-gray-400">
+                  +91 82966-69344
+                </p>
+
+                <Link href="tel:+918296669344">
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="h-auto px-2 text-primary"
+                  >
+                   Call Us For Enquiry →
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -139,7 +168,21 @@ const Footer = () => {
               />
             </div>
           </div>
-
+          <div className="space-y-2">
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="tel"
+              placeholder="+91 xxxxx-xxxxx"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="
+                  w-full mt-1 px-3 py-2 text-sm rounded-md
+                  bg-white dark:bg-transparent
+                  border border-gray-300 dark:border-gray-700
+                  focus:outline-none focus:border-gray-500
+                "
+            />
+          </div>
           {/* Project Type */}
           <div>
             <label className="text-xs text-gray-600 dark:text-gray-400">
@@ -207,6 +250,8 @@ const Footer = () => {
           {/* Checkbox */}
           <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
             <input
+              checked={bookReel}
+              onChange={(e) => setBookReel(e.target.checked)}
               type="checkbox"
               className="
                 w-4 h-4 rounded 

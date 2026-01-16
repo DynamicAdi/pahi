@@ -1,13 +1,15 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ModeToggle as ThemeButton } from "./ui/ThemeButton";
 import Image from "next/image";
-import logo_light from "@/public/pahi_light.png"
+import logo_light from "@/public/pahi_light.png";
+import { PhoneCall } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [scrolled,setScrolled] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,18 +21,24 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`w-full fixed z-[90] text-black dark:text-white py-5 px-9 flex justify-between items-center transition-all transition-colors ${scrolled ? "bg-white/60 dark:bg-black/60 backdrop-filter backdrop-blur-lg":"bg-transparent"}`}>
+    <nav
+      className={`w-full fixed z-[90] text-black dark:text-white py-5 px-9 flex justify-between items-center transition-all transition-colors ${
+        scrolled
+          ? "bg-white/60 dark:bg-black/60 backdrop-filter backdrop-blur-lg"
+          : "bg-transparent"
+      }`}
+    >
       {/* Logo */}
       <Link href={"/"}>
-      <div className="font-semibold text-xl">
-        <Image 
-        src={logo_light.src}
-        alt="Pahhi Logo"
-        width={100}
-        height={35}
-        className="hidden dark:block"
-        />
-      </div>
+        <div className="font-semibold text-xl">
+          <Image
+            src={logo_light.src}
+            alt="Pahhi Logo"
+            width={100}
+            height={35}
+            className="hidden dark:block"
+          />
+        </div>
       </Link>
       {/* Desktop Menu */}
       <ul className="hidden md:flex items-center gap-5">
@@ -53,17 +61,29 @@ const Navbar = () => {
               {label}
             </Link>
           </li>
-          
         ))}
-          <li>
-              <Link
-                onClick={() => setOpen(false)}
-                className="uppercase text-sm hover:font-semibold duration-200"
-                href={"/contact"}
-              >
-                Contact Us
-              </Link>
-            </li>
+        <li>
+          <Link
+            onClick={() => setOpen(false)}
+            className="uppercase text-sm hover:font-semibold duration-200"
+            href={"/contact"}
+          >
+            Contact Us
+          </Link>
+        </li>
+        <li className="max-md:hidden">
+          <Link
+            onClick={() => setOpen(false)}
+            className="uppercase text-sm hover:font-semibold duration-200"
+            href={"tel:+918296669344"}
+          >
+            <Button className="rounded-full bg-gray-200/80">
+              <span className="flex items-center gap-2">
+                <PhoneCall /> Call Now
+              </span>
+            </Button>
+          </Link>
+        </li>
         {/* Dark / Light Toggle */}
         {/* <li>
           <ThemeButton />
@@ -72,28 +92,28 @@ const Navbar = () => {
 
       {/* Mobile Hamburger */}
       <div className="md:hidden flex gap-5 items-center">
-      <button
-        className="md:hidden flex flex-col gap-1"
-        onClick={() => setOpen(!open)}
-      >
-        <span
-          className={`w-6 h-[2px] bg-black dark:bg-white transition ${
-            open ? "rotate-45 translate-y-1.5" : ""
-          }`}
-        />
-        <span
-          className={`w-6 h-[2px] bg-black dark:bg-white transition ${
-            open ? "opacity-0" : ""
-          }`}
-        />
-        <span
-          className={`w-6 h-[2px] bg-black dark:bg-white transition ${
-            open ? "-rotate-45 -translate-y-1.5" : ""
-          }`}
-        />
-      </button>
-{/* <ThemeButton /> */}
-</div>
+        <button
+          className="md:hidden flex flex-col gap-1"
+          onClick={() => setOpen(!open)}
+        >
+          <span
+            className={`w-6 h-[2px] bg-black dark:bg-white transition ${
+              open ? "rotate-45 translate-y-1.5" : ""
+            }`}
+          />
+          <span
+            className={`w-6 h-[2px] bg-black dark:bg-white transition ${
+              open ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`w-6 h-[2px] bg-black dark:bg-white transition ${
+              open ? "-rotate-45 -translate-y-1.5" : ""
+            }`}
+          />
+        </button>
+        {/* <ThemeButton /> */}
+      </div>
       {/* Mobile Menu */}
       <div
         className={`absolute z-50 top-[70px] left-0 w-full bg-white/70 dark:bg-black/80 backdrop-blur-md md:hidden transition-all duration-300 ${
@@ -121,14 +141,14 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-              <Link
-                onClick={() => setOpen(false)}
-                className="uppercase text-sm hover:font-semibold duration-200"
-                href={"/contact"}
-              >
-                Contact Us
-              </Link>
-            </li>
+            <Link
+              onClick={() => setOpen(false)}
+              className="uppercase text-sm hover:font-semibold duration-200"
+              href={"/contact"}
+            >
+              Contact Us
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

@@ -13,12 +13,20 @@ import { Label } from "@/components/ui/label";
 import SubmitButton from "./SubmitButton";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
-
+import {
+  Select,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { SelectContent } from "@radix-ui/react-select";
+import { Checkbox } from "./ui/checkbox";
 type ContactFormDialogProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
 };
-
 
 export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
   const handleSubmit = async (formData: FormData) => {
@@ -27,13 +35,19 @@ export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
       email: formData.get("email"),
       phone: formData.get("phone"),
       message: formData.get("message"),
+      projectType: formData.get("project-type"),
+      bookReel: formData.get("bookReel")==="on" ? true:false,
     };
-    const request = await fetch("/api/contact-us",{method:"POST",body:JSON.stringify(data)});
+    console.log(data);
+    const request = await fetch("/api/send-msg", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
     const response = await request.json();
-    if(response.success){
-      localStorage.setItem("contact-form",JSON.stringify({isFilled: true}));
+    if (response.success) {
+      localStorage.setItem("contact-form", JSON.stringify({ isFilled: true }));
       redirect("/thanks");
-    }else{
+    } else {
       toast.error(response.error);
     }
     setOpen(false);
@@ -69,11 +83,32 @@ export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
               id="phone"
               name="phone"
               type="phone"
-              placeholder="+91 3435332235"
+              placeholder="+91 xxxxx-xxxxx"
               required
             />
           </div>
-
+          {/* Project Type */}
+          <div className="space-y-2">
+            <Label htmlFor="project-type">Project Type</Label>
+            <Select name="project-type">
+              <SelectTrigger className="w-full!">
+                <SelectValue placeholder="Select Project Type" />
+              </SelectTrigger>
+              <SelectContent className="bg-black border-gray-200!">
+                <SelectGroup>
+                  <SelectItem value={"ecommere"}>Ecommerce</SelectItem>
+                  <SelectItem value={"brand"}>Brand</SelectItem>
+                  <SelectItem value={"Food"}>Food & Drink</SelectItem>
+                  <SelectItem value={"Jewellery"}>Jewellery</SelectItem>
+                  <SelectItem value={"Fashion"}>Fashion</SelectItem>
+                  <SelectItem value={"Model"}>Model</SelectItem>
+                  <SelectItem value={"Real Estate"}>Real Estate</SelectItem>
+                  <SelectItem value={"AI Services"}>AI Services</SelectItem>
+                  <SelectItem value={"other"}>Other</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="space-y-2">
             <Label htmlFor="message">Message</Label>
             <Textarea
@@ -85,10 +120,15 @@ export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
             />
           </div>
 
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <Checkbox id="bookReel" name="bookReel" />
+              <Label htmlFor="bookReel">I want to book a showreel presentation</Label>
+            </div>
+          </div>
+
           <DialogFooter>
-            <SubmitButton className="w-full">
-              Send Message
-            </SubmitButton>
+            <SubmitButton className="w-full">Send Message</SubmitButton>
           </DialogFooter>
         </form>
       </DialogContent>

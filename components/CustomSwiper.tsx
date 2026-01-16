@@ -3,7 +3,10 @@ import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-const CustomSwiper = ({ children }: React.PropsWithChildren) => {
+interface Props extends React.PropsWithChildren{
+  breakpoints?: any;
+}
+const CustomSwiper = ({ children , breakpoints }: Props) => {
   return (
     <Swiper
       spaceBetween={20}
@@ -12,7 +15,7 @@ const CustomSwiper = ({ children }: React.PropsWithChildren) => {
       className="mt-5 justify-center py-3!"
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000 }}
-      breakpoints={{
+      breakpoints={breakpoints || {
         0: { slidesPerView: 1 },
         768: { slidesPerView: 2 },
         1040: { slidesPerView: 3 },

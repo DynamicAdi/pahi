@@ -3,15 +3,15 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, projectType, message } = await req.json();
+    const { name, email, projectType, message,phone,bookReel } = await req.json();
 
-    if (!name || !email || !projectType || !message) {
+    if (!name || !email || !projectType || !message || !phone) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
       );
     }
-
+    // console.log({ name, email, projectType, message,phone,bookReel });
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -22,22 +22,23 @@ export async function POST(req: Request) {
       },
     });
 
-    /* =========================
-       1️⃣ EMAIL TO ADMIN
-    ========================== */
+  //   /* =========================
+  //      1️⃣ EMAIL TO ADMIN
+  //   ========================== */
     const adminTemplate = `
       <div style="font-family: Arial, sans-serif; padding: 20px;">
         <h2>New Project Inquiry</h2>
 
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Project Type:</strong> ${projectType}</p>
-
+        <p><strong>Want to book show reel presentation:</strong> ${projectType ? "Yes": "No"}</p>
         <p><strong>Message:</strong></p>
         <p style="white-space: pre-line;">${message}</p>
       </div>
     `;
-
+    // console.log(adminTemplate);
     await transporter.sendMail({
       from: `"Project Inquiry" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER, // 👈 admin email
@@ -45,9 +46,9 @@ export async function POST(req: Request) {
       html: adminTemplate,
     });
 
-    /* =========================
-       2️⃣ EMAIL TO USER
-    ========================== */
+  //   /* =========================
+  //      2️⃣ EMAIL TO USER
+  //   ========================== */
     const userTemplate = `
       <div style="font-family: Arial, sans-serif; padding: 20px;">
         <h2>We Received Your Project Inquiry</h2>
@@ -85,4 +86,5 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+  return NextResponse.json({success:true});
 }
