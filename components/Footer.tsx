@@ -5,6 +5,7 @@ import React from "react";
 import logo_light from "@/public/pahi_light.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { Button } from "./ui/button";
 const Footer = () => {
   const [projectType, setProjectType] = useState("Ecommerce");
@@ -20,6 +21,28 @@ const Footer = () => {
     setLoading(true);
 
     try {
+
+    if (!window.grecaptcha) {
+      toast.error("Captcha not loaded. Please try again.");
+      return;
+    }
+
+    const token = await window.grecaptcha.execute(
+      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+      { action: "lead_form" }
+    );
+
+    const captchaRes = await fetch("/api/verify-captcha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+
+    if (!captchaRes.ok) {
+      toast.error("Captcha verification failed");
+      return;
+    }
+
       const res = await fetch("/api/send-msg", {
         method: "POST",
         headers: {
@@ -45,10 +68,15 @@ const Footer = () => {
       setPhone("");
       setProjectType("Ecommerce");
       setBookReel(false);
-      router.push("/thanks");
+      router.push("/thank-you");
     } catch (error) {
       console.error(error);
     } finally {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "lead_form_success",
+        form_name: "survey_form",
+      });
       setLoading(false);
     }
   };
@@ -83,10 +111,10 @@ const Footer = () => {
 
               <div className="mt-1 flex flex-wrap items-center gap-3">
                 <p className="text-gray-600 dark:text-gray-400">
-                  info@peritumproductions.com
+                  contact@paahiproductions.in
                 </p>
 
-                <Link href="mailto:info@peritumproductions.com">
+                <Link href="mailto:contact@paahiproductions.in">
                   <Button
                     variant="link"
                     size="sm"
@@ -113,7 +141,7 @@ const Footer = () => {
                     size="sm"
                     className="h-auto px-2 text-primary"
                   >
-                   Call Us For Enquiry →
+                    Call Us For Enquiry →
                   </Button>
                 </Link>
               </div>

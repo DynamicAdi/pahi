@@ -23,7 +23,7 @@ export default function RootLayout({
       <head>
         {/* Google Tag Manager */}
         <Script
-          id="gtm-script"
+          id="google-tag-manager"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -34,6 +34,10 @@ export default function RootLayout({
               })(window,document,'script','dataLayer','GTM-MZ7XRKSR');
             `,
           }}
+        />
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
         />
         {/* End Google Tag Manager */}
       </head>

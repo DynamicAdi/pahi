@@ -5,11 +5,11 @@ import { CheckCircle2, ArrowRight, Mail, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function ThankYouPage() {
-  useEffect(() => {
-    // 🔹 Conversion tracking hook
-    console.log("Conversion: Form Submitted");
-    // window.gtag?.("event", "conversion");
-    // window.fbq?.("track", "Lead");
+    useEffect(() => {
+    if (!sessionStorage.getItem("lead_fired")) {
+      window.dataLayer.push({ event: "lead_form_success" });
+      sessionStorage.setItem("lead_fired", "true");
+    }
   }, []);
 
   return (

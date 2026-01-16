@@ -23,12 +23,14 @@ import {
 } from "@/components/ui/select";
 import { SelectContent } from "@radix-ui/react-select";
 import { Checkbox } from "./ui/checkbox";
+import { useRouter } from "next/navigation";
 type ContactFormDialogProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
 };
 
 export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
+  const router = useRouter();
   const handleSubmit = async (formData: FormData) => {
     const data = {
       name: formData.get("name"),
@@ -36,21 +38,54 @@ export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
       phone: formData.get("phone"),
       message: formData.get("message"),
       projectType: formData.get("project-type"),
-      bookReel: formData.get("bookReel")==="on" ? true:false,
+      bookReel: formData.get("bookReel") === "on",
     };
-    console.log(data);
+
+    if (!window.grecaptcha) {
+      toast.error("Captcha not loaded. Please try again.");
+      return;
+    }
+
+    const token = await window.grecaptcha.execute(
+      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+      { action: "lead_form" }
+    );
+
+    const captchaRes = await fetch("/api/verify-captcha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+
+    if (!captchaRes.ok) {
+      toast.error("Captcha verification failed");
+      return;
+    }
+
     const request = await fetch("/api/send-msg", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+
     const response = await request.json();
-    if (response.success) {
-      localStorage.setItem("contact-form", JSON.stringify({ isFilled: true }));
-      redirect("/thanks");
-    } else {
-      toast.error(response.error);
+
+    if (!response.success) {
+      toast.error(response.error || "Something went wrong");
+      return;
     }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "lead_form_success",
+      form_name: "survey_form",
+    });
+
+    localStorage.setItem("contact-form", JSON.stringify({ isFilled: true }));
+
     setOpen(false);
+
+    router.push("/thank-you");
   };
 
   return (
@@ -123,7 +158,9 @@ export function ContactFormDialog({ open, setOpen }: ContactFormDialogProps) {
           <div className="space-y-2">
             <div className="flex items-center gap-3">
               <Checkbox id="bookReel" name="bookReel" />
-              <Label htmlFor="bookReel">I want to book a showreel presentation</Label>
+              <Label htmlFor="bookReel">
+                I want to book a showreel presentation
+              </Label>
             </div>
           </div>
 
